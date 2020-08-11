@@ -22,8 +22,10 @@
 		}
 
 		function draw() {
+			frameRate(5);
 			// background(51);
 			// image(capture, 0, 0, 800, 400);
+			console.log(capture);
 			s.emit("cam", {name:name,pic:capture});
 		}
 
