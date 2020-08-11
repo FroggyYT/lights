@@ -24,6 +24,7 @@
 		function draw() {
 			frameRate(1);
 			capture.loadPixels();
+			console.log(capture.pixels);
 			s.emit("cam", {name:name,pic:capture.pixels});
 		}
 
