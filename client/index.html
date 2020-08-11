@@ -14,26 +14,31 @@
 		var name;
 
 		function setup() {
-			createCanvas(800, 400);
+			createCanvas(80, 40);
 			capture = createCapture(VIDEO);
-			capture.size(800, 400);
+			capture.size(80, 40);
 			capture.hide();
 			name = prompt("Name?");
 		}
 
 		function draw() {
 			frameRate(5);
-			// background(51);
-			// image(capture, 0, 0, 800, 400);
+			background(51);
+			image(capture, 0, 0, 80, 40);
+			loadPixels();
 			console.log(capture.get());
-			s.emit("cam", {name:name,pic:capture.get()});
+			s.emit("cam", {name:name,pic:pixels});
+			updatePixels();
+			background(51);
 		}
 
 		s.on("cam", (d) => {
 			// console.log("h");
 			// console.log(d);
 			background(51);
-			image(d, 0, 0, 800, 400);
+			loadPixels();
+			pixels = d;
+			updatePixels();
 		});
 
 		var onButton = document.createElement("button");
