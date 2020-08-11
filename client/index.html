@@ -12,6 +12,7 @@
 
 		var capture;
 		var name;
+		var aPixels;
 
 		function setup() {
 			createCanvas(80, 40);
@@ -20,21 +21,21 @@
 			//capture.hide();
 			name = prompt("Name?");
 			frameRate(1);
+			pixels = [];
 		}
 
 		function draw() {
+			background(51);
+			loadPixels();
+			pixels = aPixels;
+			updatePixels();
 			capture.loadPixels();
 			s.emit("cam", {name:name,pic:capture.pixels});
 		}
 
 		s.on("cam", (d) => {
 			console.log(d);
-			background(51);
-			loadPixels();
-			for (var i in pixels){
-				pixels[i] = pixels[d];	
-			}
-			updatePixels();
+			aPixels = d;
 		});
 
 		var onButton = document.createElement("button");
