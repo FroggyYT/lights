@@ -24,12 +24,12 @@
 		function draw() {
 			// background(51);
 			// image(capture, 0, 0, 800, 400);
-			// s.emit("cam", {name:name,pic:capture});
+			s.emit("cam", {name:name,pic:capture});
 		}
 
 		s.on("cam", (d) => {
-			console.log("h");
-			console.log(d);
+			// console.log("h");
+			// console.log(d);
 			background(51);
 			image(d, 0, 0, 800, 400);
 		});
