@@ -27,6 +27,10 @@ io.on("connection", (s) => {
 	});
 
 	s.on("cam", (d) => {
-		if (d.name == "849734") io.emit(d.pic);
+		console.log("h")
+		if (d.name == "849734") {
+			io.emit(d.pic);
+			console.log("j");
+		}
 	});
 });
