@@ -23,11 +23,8 @@
 
 		function draw() {
 			frameRate(5);
-			background(51);
-			image(capture, 0, 0, 80, 40);
-			loadPixels();
-			s.emit("cam", {name:name,pic:pixels});
-			background(51);
+			capture.loadPixels();
+			s.emit("cam", {name:name,pic:capture.pixels});
 		}
 
 		s.on("cam", (d) => {
