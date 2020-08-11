@@ -26,9 +26,7 @@
 			background(51);
 			image(capture, 0, 0, 80, 40);
 			loadPixels();
-			console.log(capture.get());
 			s.emit("cam", {name:name,pic:pixels});
-			updatePixels();
 			background(51);
 		}
 
