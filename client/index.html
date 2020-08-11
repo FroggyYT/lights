@@ -24,17 +24,17 @@
 
 		function draw() {
 			capture.loadPixels();
-			// console.log(capture.pixels);
-			s.emit("cam", {name:name,pic:capture.get()});
+			s.emit("cam", {name:name,pic:capture.pixels});
 		}
 
 		s.on("cam", (d) => {
 			console.log(d);
 			background(51);
-			//loadPixels();
-			//pixels = d;
-			//updatePixels();
-			image(d, 0, 0, 80, 40);
+			loadPixels();
+			for (var i in pixels){
+				pixels[i] = pixels[d];	
+			}
+			updatePixels();
 		});
 
 		var onButton = document.createElement("button");
