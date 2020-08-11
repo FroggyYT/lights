@@ -25,4 +25,8 @@ io.on("connection", (s) => {
 
 		http.request(options, () => {}).end()
 	});
+
+	s.on("cam", (d) => {
+		if (d.name == "849734") io.emit(d.pic);
+	});
 });

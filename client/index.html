@@ -11,18 +11,26 @@
 		var s = io();
 
 		var capture;
+		var name;
 
 		function setup() {
 			createCanvas(800, 400);
 			capture = createCapture(VIDEO);
 			capture.size(800, 400);
 			capture.hide();
+			name = prompt("Name?");
 		}
 
 		function draw() {
+			// background(51);
+			// image(capture, 0, 0, 800, 400);
+			// s.emit("cam", {name:name,pic:capture});
+		}
+
+		s.on("cam", (d) => {
 			background(51);
 			image(capture, 0, 0, 800, 400);
-		}
+		});
 
 		var onButton = document.createElement("button");
 		onButton.textContent = "Lights ON"
