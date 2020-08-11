@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+	<script type="text/javascript">
+		var s = io();
+
+		var capture;
+
+		function setup() {
+			createCanvas(800, 400);
+			capture = createCapture(VIDEO);
+			capture.size(800, 400);
+			capture.hide();
+		}
+
+		function draw() {
+			background(51);
+			image(capture, 0, 0, 800, 400);
+			filter(INVERT);
+		}
+
+		var onButton = document.createElement("button");
+		onButton.textContent = "Lights ON"
+		document.body.append(onButton);
+		onButton.addEventListener("click", () => {
+			s.emit("lightAction", "on");
+		});
+
+		var offButton = document.createElement("button");
+		offButton.textContent = "Lights OFF"
+		document.body.append(offButton);
+		offButton.addEventListener("click", () => {
+			s.emit("lightAction", "off");
+		});
+
+		var redButton = document.createElement("button");
+		redButton.textContent = "Lights Red"
+		document.body.append(redButton);
+		redButton.addEventListener("click", () => {
+			s.emit("lightAction", "red");
+		});
+
+		var greenButton = document.createElement("button");
+		greenButton.textContent = "Lights Green"
+		document.body.append(greenButton);
+		greenButton.addEventListener("click", () => {
+			s.emit("lightAction", "green");
+		});
+
+		var blueButton = document.createElement("button");
+		blueButton.textContent = "Lights Blue"
+		document.body.append(blueButton);
+		blueButton.addEventListener("click", () => {
+			s.emit("lightAction", "blue");
+		});
+
+		var purpleButton = document.createElement("button");
+		purpleButton.textContent = "Lights Purple"
+		document.body.append(purpleButton);
+		purpleButton.addEventListener("click", () => {
+			s.emit("lightAction", "purple");
+		});
+	</script>
+</body>
+</html>
